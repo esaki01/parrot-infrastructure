@@ -3,18 +3,18 @@ resource "google_cloudbuild_trigger" "frontend-deploy" {
 
   trigger_template {
     branch_name = "${lookup(var.build_trigger_branch, "${terraform.workspace}")}"
-    repo_name   = "github_esaki01_parrot"
+    repo_name   = "github_esaki01_parrot-frontend"
   }
 
   included_files = [
-    "frontend/**",
+    "**",
   ]
 
   substitutions = {
     _GCP_PROJECT_ID = "${data.google_project.project.project_id}"
   }
 
-  filename = "frontend/cloudbuild.yaml"
+  filename = "cloudbuild.yaml"
 }
 
 resource "google_cloudbuild_trigger" "backend-deploy" {
@@ -22,16 +22,16 @@ resource "google_cloudbuild_trigger" "backend-deploy" {
 
   trigger_template {
     branch_name = "${lookup(var.build_trigger_branch, "${terraform.workspace}")}"
-    repo_name   = "github_esaki01_parrot"
+    repo_name   = "github_esaki01_parrot-backend"
   }
 
   included_files = [
-    "backend/**",
+    "**",
   ]
 
   substitutions = {
     _GCP_PROJECT_ID = "${data.google_project.project.project_id}"
   }
 
-  filename = "backend/cloudbuild.yaml"
+  filename = "cloudbuild.yaml"
 }
