@@ -1,5 +1,5 @@
-# PARROT/Infra
-Cloud infrastructure of PARROT.
+# parrot-infrastructure
+> Infrastructure as Code of "PARROT".
 
 ## Environments
 - Public Cloud: Google Cloud Platform
